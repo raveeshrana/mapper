@@ -2,17 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="10068c64-f918-4650-b188-d26310da1194" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/fedex/beacon/priority/AccountKey.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fedex/beacon/priority/AccountCache.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fedex/beacon/priority/AccountCache.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fedex/beacon/priority/AccountDetails.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fedex/beacon/priority/MapAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fedex/beacon/priority/MapAccount.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com/fedex/priority/TrackerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/fedex/priority/TrackerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/fedex/beacon/priority/AccountCache.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/fedex/beacon/priority/AccountCache.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/fedex/beacon/priority/AccountDetails.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/fedex/beacon/priority/AccountDetails.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/fedex/beacon/priority/MapAccount.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/fedex/beacon/priority/MapAccount.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/fedex/priority/TrackerTest.class" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -36,7 +26,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/com/fedex/beacon/priority/MapAccount.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="555">
-              <caret line="37" column="3" lean-forward="true" selection-start-line="37" selection-start-column="3" selection-end-line="37" selection-end-column="3" />
+              <caret line="37" column="3" selection-start-line="37" selection-start-column="3" selection-end-line="37" selection-end-column="3" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#387#399#0" expanded="true" />
@@ -70,8 +60,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/com/fedex/priority/TrackerTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="555">
-              <caret line="37" lean-forward="true" selection-start-line="37" selection-end-line="37" />
+            <state relative-caret-position="300">
+              <caret line="20" column="32" selection-start-line="20" selection-start-column="32" selection-end-line="20" selection-end-column="32" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -192,7 +182,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1590171395939" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1590172359518" />
     <property name="extract.method.default.visibility" value="private" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
@@ -201,6 +191,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/src/test/java/com/fedex/provisioning" />
       <recent name="$PROJECT_DIR$/src/main/java" />
     </key>
@@ -233,6 +224,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="TrackerTest.publishShipperAndThirdParty" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="mapper" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.fedex.priority.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.fedex.priority" />
+      <option name="MAIN_CLASS_NAME" value="com.fedex.priority.TrackerTest" />
+      <option name="METHOD_NAME" value="publishShipperAndThirdParty" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="TrackerTest.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="mapper" />
       <extension name="coverage">
@@ -252,6 +259,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.TrackerTest" />
+        <item itemvalue="JUnit.TrackerTest.publishShipperAndThirdParty" />
         <item itemvalue="JUnit.TrackerTest.test" />
       </list>
     </recent_temporary>
@@ -270,12 +278,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="TrackerTest - 2020.05.21 at 11h 27m 44s.xml">
-      <configuration name="TrackerTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TrackerTest_test - 2020.05.21 at 11h 31m 12s.xml">
-      <configuration name="TrackerTest.test" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="TrackerTest_test - 2020.05.21 at 11h 33m 18s.xml">
       <configuration name="TrackerTest.test" configurationId="JUnit" />
     </history-entry>
@@ -291,12 +293,27 @@
     <history-entry file="TrackerTest - 2020.05.21 at 11h 57m 36s.xml">
       <configuration name="TrackerTest" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="TrackerTest - 2020.05.22 at 13h 14m 19s.xml">
+      <configuration name="TrackerTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TrackerTest_publishShipperAndThirdParty - 2020.05.22 at 13h 22m 23s.xml">
+      <configuration name="TrackerTest.publishShipperAndThirdParty" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TrackerTest - 2020.05.22 at 13h 24m 50s.xml">
+      <configuration name="TrackerTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TrackerTest - 2020.05.22 at 13h 25m 20s.xml">
+      <configuration name="TrackerTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TrackerTest - 2020.05.22 at 13h 27m 44s.xml">
+      <configuration name="TrackerTest" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1680" height="962" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25274727" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25274727" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -305,12 +322,12 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32959184" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32873562" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.2387755" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Terminal" order="7" weight="0.32959184" />
+      <window_info anchor="bottom" id="Terminal" order="7" weight="0.32873562" />
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Problems" order="9" />
       <window_info anchor="bottom" id="DB Execution Console" order="10" />
@@ -375,7 +392,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/com/fedex/beacon/priority/MapAccount.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="555">
-          <caret line="37" column="3" lean-forward="true" selection-start-line="37" selection-start-column="3" selection-end-line="37" selection-end-column="3" />
+          <caret line="37" column="3" selection-start-line="37" selection-start-column="3" selection-end-line="37" selection-end-column="3" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#387#399#0" expanded="true" />
@@ -383,10 +400,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/com/fedex/priority/TrackerTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="555">
-          <caret line="37" lean-forward="true" selection-start-line="37" selection-end-line="37" />
+        <state relative-caret-position="300">
+          <caret line="20" column="32" selection-start-line="20" selection-start-column="32" selection-end-line="20" selection-end-column="32" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
