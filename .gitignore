@@ -1,0 +1,26 @@
+target/
+*.csv
+*.tar.gz
+.DS_Store
+*.log
+# intellij specific
+.idea/
+*.iml
+# netbeans specific
+nbproject/private/
+build/
+nbbuild/
+dist/
+nbdist/
+nbactions.xml
+nb-configuration.xml
+.nb-gradle/
+# eclipse specific
+.classpath
+.project
+.settings/
+.checkstyle
+*.versionsBackup
+dependency-reduced-pom.xml
+*.zip
+*.patch
