@@ -25,22 +25,20 @@ public class MapAccount {
     return accounts.toArray(new AccountKey[accounts.size()]);
   }
 
-  private static void addAccount(final AccountKey shipperAccountKey, final String trackType,
+  private static void addAccount(final AccountKey accountKey, final String trackType,
     final List<AccountKey> accountKeys) {
-    if (shipperAccountKey == null) {
+    final Set<String> trackTypeList = AccountCache.get(accountKey);
+
+    if (trackTypeList == null || !trackTypeList.contains(trackType)) {
       return;
     }
-    final Set<String> shipperTrackType = AccountCache.get(shipperAccountKey);
-    if (shipperTrackType == null || !shipperTrackType.contains(trackType)) {
-      return;
-    }
-    accountKeys.add(shipperAccountKey);
+    accountKeys.add(accountKey);
   }
 
   private static void addThirdPartyAccount(final AccountKey thirdPartyAccountKey,
     final String trackType, final List<AccountKey> accounts) {
-    if (thirdPartyAccountKey == null || !AccountCache.get(thirdPartyAccountKey)
-      .contains(trackType)) {
+    final Set<String> trackTypeList = AccountCache.get(thirdPartyAccountKey);
+    if (trackTypeList == null || !trackTypeList.contains(trackType)) {
       return;
     }
 
