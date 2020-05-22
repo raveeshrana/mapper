@@ -12,6 +12,10 @@ public class AccountKey implements Serializable {
   private String accountNumber;
   private String accountType;
 
+  public AccountKey(){
+
+  }
+
   public AccountKey(final String accountNumber, final String accountType) {
     this.accountNumber = accountNumber;
     this.accountType = accountType;
