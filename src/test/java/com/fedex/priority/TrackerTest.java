@@ -84,4 +84,21 @@ public class TrackerTest {
     assertEquals("12348", detailsList[1].getAccountNumber());
     assertEquals("R", detailsList[1].getAccountType());
   }
+
+  @Test()
+  public void testNull(){
+     AccountKey[] detailsList = MapAccount
+      .getPublishAccountList("12345", null, "12348", "01");
+    assertEquals(2, detailsList.length);
+    assertEquals("12345", detailsList[0].getAccountNumber());
+    assertEquals("S", detailsList[0].getAccountType());
+
+    assertEquals("12348", detailsList[1].getAccountNumber());
+    assertEquals("T", detailsList[1].getAccountType());
+
+     detailsList = MapAccount
+      .getPublishAccountList("", "", "", "01");
+    assertEquals(0, detailsList.length);
+
+  }
 }
