@@ -32,7 +32,7 @@ public class PriorityCache {
       .withCache("priority", CacheConfigurationBuilder
         .newCacheConfigurationBuilder(AccountKey.class, AccountDetails.class,
           ResourcePoolsBuilder.heap(1000).offheap(200, MemoryUnit.MB))
-        .withExpiry(ExpiryPolicyBuilder.timeToLiveExpiration(Duration.ofMinutes(200)))
+        .withExpiry(ExpiryPolicyBuilder.timeToLiveExpiration(Duration.ofMinutes(360)))
         .withLoaderWriter(new CacheLoaderWriter<AccountKey, AccountDetails>() {
           @Override
           public AccountDetails load(final AccountKey accountKey) throws Exception {

@@ -9,9 +9,17 @@ import com.fedex.beacon.cache.PriorityCache;
 
 public class AccountService {
 
-  private static PriorityCache priorityCache = PriorityCache.getPriorityCacheInstance();
+  private PriorityCache priorityCache;
 
-  public  static AccountKey[] getPublishAccountList(final String shipperAccountNumber,
+  public AccountService() {
+    this(PriorityCache.getPriorityCacheInstance());
+  }
+
+  public AccountService(final PriorityCache priorityCache) {
+    this.priorityCache = priorityCache;
+  }
+
+  public AccountKey[] getPublishAccountList(final String shipperAccountNumber,
     final String recipientAccountNumber, final String thirdPartyAccountNumber,
     final String trackType) {
     final List<AccountKey> accounts = new ArrayList<>();
@@ -30,7 +38,7 @@ public class AccountService {
     return accounts.toArray(new AccountKey[accounts.size()]);
   }
 
-  private static void addAccount(final AccountKey accountKey, final String trackType,
+  private void addAccount(final AccountKey accountKey, final String trackType,
     final List<AccountKey> accountKeys) {
     final AccountDetails account = priorityCache.get(accountKey);
 
@@ -40,9 +48,9 @@ public class AccountService {
     accountKeys.add(accountKey);
   }
 
-  private static void addThirdPartyAccount(final AccountKey thirdPartyAccountKey,
-    final String trackType, final List<AccountKey> accounts) {
-    final AccountDetails account =  priorityCache.get(thirdPartyAccountKey);
+  private void addThirdPartyAccount(final AccountKey thirdPartyAccountKey, final String trackType,
+    final List<AccountKey> accounts) {
+    final AccountDetails account = priorityCache.get(thirdPartyAccountKey);
     if (account == null || !account.getTrackType().contains(trackType)) {
       return;
     }
