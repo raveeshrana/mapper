@@ -1,4 +1,4 @@
-package com.fedex.beacon.priority;
+package com.fedex.beacon.beans;
 
 import java.io.Serializable;
 import java.util.Objects;

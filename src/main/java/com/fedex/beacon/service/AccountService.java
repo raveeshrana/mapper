@@ -1,15 +1,20 @@
-package com.fedex.beacon.priority;
+package com.fedex.beacon.service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
-public class MapAccount {
+import com.fedex.beacon.beans.AccountDetails;
+import com.fedex.beacon.beans.AccountKey;
+import com.fedex.beacon.cache.PriorityCache;
 
-  public static AccountKey[] getPublishAccountList(final String shipperAccountNumber,
+public class AccountService {
+
+  private static PriorityCache priorityCache = PriorityCache.getPriorityCacheInstance();
+
+  public  static AccountKey[] getPublishAccountList(final String shipperAccountNumber,
     final String recipientAccountNumber, final String thirdPartyAccountNumber,
     final String trackType) {
-    final List<AccountKey> accounts = new ArrayList<AccountKey>();
+    final List<AccountKey> accounts = new ArrayList<>();
 
     final AccountKey shipperAccountKey =
       new AccountKey(shipperAccountNumber, AccountKey.SHIPPER_ACCOUNT);
@@ -27,9 +32,9 @@ public class MapAccount {
 
   private static void addAccount(final AccountKey accountKey, final String trackType,
     final List<AccountKey> accountKeys) {
-    final Set<String> trackTypeList = AccountCache.get(accountKey);
+    final AccountDetails account = priorityCache.get(accountKey);
 
-    if (trackTypeList == null || !trackTypeList.contains(trackType)) {
+    if (account == null || !account.getTrackType().contains(trackType)) {
       return;
     }
     accountKeys.add(accountKey);
@@ -37,8 +42,8 @@ public class MapAccount {
 
   private static void addThirdPartyAccount(final AccountKey thirdPartyAccountKey,
     final String trackType, final List<AccountKey> accounts) {
-    final Set<String> trackTypeList = AccountCache.get(thirdPartyAccountKey);
-    if (trackTypeList == null || !trackTypeList.contains(trackType)) {
+    final AccountDetails account =  priorityCache.get(thirdPartyAccountKey);
+    if (account == null || !account.getTrackType().contains(trackType)) {
       return;
     }
 
