@@ -1,5 +1,6 @@
 package com.fedex.beacon.service;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,7 +8,7 @@ import com.fedex.beacon.beans.AccountDetails;
 import com.fedex.beacon.beans.AccountKey;
 import com.fedex.beacon.cache.PriorityCache;
 
-public class AccountService {
+public class AccountService implements Serializable{
 
   private PriorityCache priorityCache;
 

@@ -15,15 +15,15 @@ public class ConnectionManager {
       config.setJdbcUrl(info.getDatabaseUrl());
       config.setUsername(info.getUserName());
       config.setPassword(info.getPassword());
-      config.setConnectionTimeout(info.getConnectionTimeOut());
-      config.setDriverClassName(config.getDataSourceClassName());
+      config.setConnectionTimeout(60*1000);
+      config.setDriverClassName(info.getJdbcDriver());
       config.setMaximumPoolSize(128);
       config.setMaximumPoolSize(10);
       config.setIdleTimeout(10 * 60 * 1000);
       config.setReadOnly(true);
       ds = new HikariDataSource(config);
     } catch (Exception ex) {
-      throw new RuntimeException("Not able to connect to database.", ex);
+      throw new RuntimeException("Not able to connect to database."+ ex.getCause());
     }
   }
 

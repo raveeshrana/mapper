@@ -1,9 +1,10 @@
 package com.fedex.priority;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
+import static org.junit.Assert.assertEquals;
+
+import org.junit.BeforeClass;
+import org.junit.Test;
 
 import com.fedex.beacon.beans.AccountKey;
 import com.fedex.beacon.cache.PriorityCache;
@@ -13,7 +14,7 @@ public class TrackerTest {
 
   private static AccountService accountService;
 
-  @BeforeAll()
+  @BeforeClass()
   public static void setup() {
     PriorityCache priorityCache = PriorityCache.getPriorityCacheInstance();
     accountService = new AccountService(PriorityCache.getPriorityCacheInstance());

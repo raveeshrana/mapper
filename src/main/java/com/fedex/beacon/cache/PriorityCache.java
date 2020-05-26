@@ -24,9 +24,18 @@ import com.fedex.beacon.utils.StringUtils;
 
 public class PriorityCache {
 
+  private static final String ACCOUNT_TRACK_TYPE_QUERY = "SELECT LISTAGG(CN.EVENT_CD, ',') WITHIN GROUP (ORDER BY A.ACCOUNT_ID) \"TRACK_TYPE\""+ 
+  " FROM FXTRACK_SCHEMA.CUST_ACCT_NBR A, FXTRACK_SCHEMA.CUST_NAME_EVENT_LIST CN, FXTRACK_SCHEMA.CONSIGNEE_ACCT_NUMBER_LIST CA" +
+  " WHERE A.ACCOUNT_ACTIVE_FLG='Y'"+
+  "   AND A.ACCOUNT_ID = CN.ACCOUNT_ID"+
+  "   AND CA.ACCOUNT_ID = A.ACCOUNT_ID"+
+  "   AND A.ACCOUNT_ID = ?"+
+  "   AND CA.CON_TYPE = ?"+
+  " GROUP BY A.ACCOUNT_ID,CA.CON_TYPE";
+
   private static Cache<AccountKey, AccountDetails> pCache;
   private static PriorityCache priorityCache;
-
+  
   private PriorityCache() {
     final CacheManager cacheManager = CacheManagerBuilder.newCacheManagerBuilder()
       .withCache("priority", CacheConfigurationBuilder
@@ -86,11 +95,21 @@ public class PriorityCache {
   }
 
   public AccountDetails loadValue(final AccountKey key) {
-    if (key == null || key.getAccountNumber() == null || key.getAccountType() == null) {
+    if (key == null || key.getAccountNumber() == null) {
       return null;
     }
-    try (Connection con = ConnectionManager.getConnection()){
-      final PreparedStatement statement = con.prepareStatement("");
+    final String accountType = getConnectoinType(key.getAccountType());
+    if(accountType == null){
+      return null;
+    }
+    final AccountDetails accountDetails = new AccountDetails();
+    accountDetails.setTrackType(new HashSet<String>());
+    accountDetails.getTrackType().add("01");
+    return new AccountDetails();
+/*    try (Connection con = ConnectionManager.getConnection()){
+      final PreparedStatement statement = con.prepareStatement(ACCOUNT_TRACK_TYPE_QUERY);
+      statement.setString(1, key.getAccountNumber());
+      statement.setString(2, accountType);
       final ResultSet resultSet = statement.executeQuery();
       final String result = resultSet.getString(1);
       final AccountDetails accountDetails = new AccountDetails();
@@ -101,5 +120,22 @@ public class PriorityCache {
     } catch (Exception ex) {
       throw new RuntimeException("Could not get connection ", ex);
     }
+    */
+  }
+  
+  private String getConnectoinType(final String accountType){
+	  if(StringUtils.isEmpty(accountType)){
+		  return null;
+	  }
+	  switch(accountType){
+	  case AccountKey.SHIPPER_ACCOUNT:
+		  return "Shipper";
+	  case AccountKey.RECIPIENT_ACCOUNT:
+		  return "Recipient";
+	  case AccountKey.THIRD_PARTY_ACCOUNT:
+		  return "Third Party";
+	  default:
+		  return null;
+	  }
   }
 }
