@@ -43,7 +43,7 @@ public class AccountService implements Serializable{
     final List<AccountKey> accountKeys) {
     final AccountDetails account = priorityCache.get(accountKey);
 
-    if (account == null || !account.getTrackType().contains(trackType)) {
+    if (account == null || account.getTrackType() == null || !account.getTrackType().contains(trackType)) {
       return;
     }
     accountKeys.add(accountKey);
@@ -52,12 +52,12 @@ public class AccountService implements Serializable{
   private void addThirdPartyAccount(final AccountKey thirdPartyAccountKey, final String trackType,
     final List<AccountKey> accounts) {
     final AccountDetails account = priorityCache.get(thirdPartyAccountKey);
-    if (account == null || !account.getTrackType().contains(trackType)) {
+    if (account == null || account.getTrackType() == null || !account.getTrackType().contains(trackType)) {
       return;
     }
 
     for (int i = 0; i < accounts.size(); i++) {
-      if (accounts.get(i).getAccountNumber() == thirdPartyAccountKey.getAccountNumber()) {
+      if (accounts.get(i).getAccountNumber().equals(thirdPartyAccountKey.getAccountNumber())) {
         return;
       }
     }

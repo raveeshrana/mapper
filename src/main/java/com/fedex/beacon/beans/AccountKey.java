@@ -10,7 +10,7 @@ public class AccountKey implements Serializable {
 	public static final String SHIPPER_ACCOUNT = "S";
 	public static final String RECIPIENT_ACCOUNT = "R";
 	public static final String THIRD_PARTY_ACCOUNT = "T";
-
+	
 	private String accountNumber;
 	private String accountType;
 

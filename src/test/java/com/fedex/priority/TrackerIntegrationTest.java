@@ -21,12 +21,12 @@ public class TrackerIntegrationTest {
 		info.setDatabaseUrl("jdbc:oracle:thin:@ldap://oid.inf.fedex.com:3060/FXTRACK_SVC1_L0,cn=OracleContext");
 		info.setJdbcDriver("oracle.jdbc.OracleDriver");
 		info.setUserName("FXTRACK_RO_APP");
-		info.setPassword("doC4C1TbXcOeBVtOKqLK2igts");
+		info.setPassword("doC4C1TbXcOeBVtOkqLK2igts"); 
 		ConnectionManager.init(info);
 		accountService = new AccountService(PriorityCache.getPriorityCacheInstance());
 	}
 
-	@Test()
+	//@Test() 
 	public void publishAll3() {
 		final AccountKey[] detailsList = accountService.getPublishAccountList("12345", "12346", "12348", "01");
 		assertEquals(3, detailsList.length);

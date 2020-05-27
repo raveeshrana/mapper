@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.time.Duration;
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.List;
 
 import org.ehcache.Cache;
 import org.ehcache.CacheManager;
@@ -102,25 +103,25 @@ public class PriorityCache {
     if(accountType == null){
       return null;
     }
-    final AccountDetails accountDetails = new AccountDetails();
-    accountDetails.setTrackType(new HashSet<String>());
-    accountDetails.getTrackType().add("01");
-    return new AccountDetails();
-/*    try (Connection con = ConnectionManager.getConnection()){
+
+    try (Connection con = ConnectionManager.getConnection()){
       final PreparedStatement statement = con.prepareStatement(ACCOUNT_TRACK_TYPE_QUERY);
       statement.setString(1, key.getAccountNumber());
       statement.setString(2, accountType);
       final ResultSet resultSet = statement.executeQuery();
-      final String result = resultSet.getString(1);
       final AccountDetails accountDetails = new AccountDetails();
-      accountDetails.setTrackType(new HashSet<>(Arrays.asList(result.split(","))));
+      while(resultSet.next()){
+      final String result = resultSet.getString(1);
+      final List<String> string = Arrays.asList(result.split(","));
+      accountDetails.setTrackType(new HashSet<>(string));
+      }
       return accountDetails;
     } catch (SQLException sql) {
       throw new RuntimeException("Error Executing query ", sql);
     } catch (Exception ex) {
       throw new RuntimeException("Could not get connection ", ex);
     }
-    */
+    
   }
   
   private String getConnectoinType(final String accountType){
