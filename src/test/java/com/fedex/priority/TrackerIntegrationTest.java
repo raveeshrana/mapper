@@ -3,11 +3,9 @@ package com.fedex.priority;
 import static org.junit.Assert.assertEquals;
 
 import org.junit.BeforeClass;
-import org.junit.Test;
 
 import com.fedex.beacon.beans.AccountKey;
 import com.fedex.beacon.cache.PriorityCache;
-import com.fedex.beacon.database.ConnectionInfo;
 import com.fedex.beacon.database.ConnectionManager;
 import com.fedex.beacon.service.AccountService;
 
@@ -17,12 +15,7 @@ public class TrackerIntegrationTest {
 
 	@BeforeClass()
 	public static void setup() {
-		final ConnectionInfo info = new ConnectionInfo();
-		info.setDatabaseUrl("jdbc:oracle:thin:@ldap://oid.inf.fedex.com:3060/FXTRACK_SVC1_L0,cn=OracleContext");
-		info.setJdbcDriver("oracle.jdbc.OracleDriver");
-		info.setUserName("FXTRACK_RO_APP");
-		info.setPassword("doC4C1TbXcOeBVtOkqLK2igts"); 
-		ConnectionManager.init(info);
+		ConnectionManager.init("jdbc:oracle:thin:@ldap://oid.inf.fedex.com:3060/FXTRACK_SVC1_L0,cn=OracleContext", "oracle.jdbc.OracleDriver", "FXTRACK_RO_APP", "doC4C1TbXcOeBVtOkqLK2igts");
 		accountService = new AccountService(PriorityCache.getPriorityCacheInstance());
 	}
 

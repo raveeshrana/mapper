@@ -23,8 +23,17 @@ import com.fedex.beacon.beans.AccountKey;
 import com.fedex.beacon.database.ConnectionManager;
 import com.fedex.beacon.utils.StringUtils;
 
+/**
+ * Priority cache is a singleton class.
+ * Uses Ehache for caching the data. if the data is not present in cache it calls loadValue method.
+ *
+ * loadValue method calls the database query and puts in the cache.
+ */
 public class PriorityCache {
 
+  /**
+   * Get track types from database query.
+   */
   private static final String ACCOUNT_TRACK_TYPE_QUERY = "SELECT LISTAGG(CN.EVENT_CD, ',') WITHIN GROUP (ORDER BY A.ACCOUNT_ID) \"TRACK_TYPE\""+ 
   " FROM FXTRACK_SCHEMA.CUST_ACCT_NBR A, FXTRACK_SCHEMA.CUST_NAME_EVENT_LIST CN, FXTRACK_SCHEMA.CONSIGNEE_ACCT_NUMBER_LIST CA" +
   " WHERE A.ACCOUNT_ACTIVE_FLG='Y'"+
@@ -64,10 +73,20 @@ public class PriorityCache {
     pCache = cacheManager.getCache("priority", AccountKey.class, AccountDetails.class);
   }
 
+  /**
+   * function that can be called to refresh the cache.
+   */
   public void refresh(){
     pCache.clear();
   }
 
+  /**
+   * put the account in cache.
+   *
+   * @param accountNumber account number.
+   * @param accountType accountType.
+   * @param trackType trackType comma separated values.
+   */
   public void put(final String accountNumber, final String accountType, final String trackType) {
     final AccountKey accountKey = new AccountKey(accountNumber, accountType);
     final AccountDetails accountDetails = new AccountDetails();
@@ -75,6 +94,12 @@ public class PriorityCache {
     pCache.put(accountKey, accountDetails);
   }
 
+  /**
+   * gets the track types from list.
+   *
+   * @param key account key.
+   * @return account details that has track type.
+   */
   public AccountDetails get(final AccountKey key) {
     if (key == null || StringUtils.isEmpty(key.getAccountNumber()) || StringUtils
       .isEmpty(key.getAccountType())) {
@@ -83,6 +108,10 @@ public class PriorityCache {
     return pCache.get(key);
   }
 
+  /**
+   * makes the class singleton having single instance.
+   * @return PriorityCache.
+   */
   public static PriorityCache getPriorityCacheInstance() {
     if (priorityCache != null) {
       return priorityCache;
@@ -95,6 +124,11 @@ public class PriorityCache {
     }
   }
 
+  /**
+   * function gets called if the vlaue is not found in cache. Query is hit to database and put in cache.
+   * @param key Account Key.
+   * @return AccountDetails.
+   */
   public AccountDetails loadValue(final AccountKey key) {
     if (key == null || key.getAccountNumber() == null) {
       return null;
@@ -123,7 +157,13 @@ public class PriorityCache {
     }
     
   }
-  
+
+  /**
+   * converts the connection Type from BW type to Database type.
+   *  e.g S --> Shipper for query.
+   * @param accountType
+   * @return Database value of conn type.
+   */
   private String getConnectoinType(final String accountType){
 	  if(StringUtils.isEmpty(accountType)){
 		  return null;
